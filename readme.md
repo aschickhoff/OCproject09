@@ -20,7 +20,7 @@ git clone https://github.com/aschickhoff/OCproject09.git
 cd OCproject09
 ```
 
-## for Window
+## for Windows
 3. Create a virtual environment
 ```Bash
 python -m venv env
