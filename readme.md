@@ -15,3 +15,26 @@ algorithm. The application will find the best combination of shares to buy to ge
 ```Bash
 git clone https://github.com/aschickhoff/OCproject09.git
 ```
+
+2. Create virtual environment
+```Bash
+cd litreview
+python -m venv env
+env\Scripts\activate
+```
+
+3. Install the needed packages
+```Bash
+pip install -r requirements.txt
+```
+## Start the server
+
+4. Launch the Django server
+```Bash
+python manage.py runserver
+```
+
+5. Go to the landing page in your browser
+
+http://127.0.0.1:8000/
+
