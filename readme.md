@@ -17,7 +17,7 @@ git clone https://github.com/aschickhoff/OCproject09.git
 
 2. Go to your work directory
 ```Bash
-cd litreview
+cd OCproject09
 ```
 
 ## for Window
