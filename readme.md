@@ -1,8 +1,7 @@
-<h1 align="center">OpenClassrooms Project 7</h1>
-<h3 align="center">Solve Problems Using Algorithms in Python</h3>
+<h1 align="center">OpenClassrooms Project 9</h1>
+<h3 align="center">Develop a Web Application Using Django</h3>
 
-<p align="left">This is my seventh project for OpenClassrooms where I had to optimize an investment with the help of an 
-algorithm. The application will find the best combination of shares to buy to get the best profit after 2 years.</p>
+<p align="left">This is my ninth project for OpenClassrooms where I had to create a product that enables a community of users to review books and literature on demand.</p>
 
 ## Prerequisite
 
@@ -34,7 +33,5 @@ pip install -r requirements.txt
 python manage.py runserver
 ```
 
-5. Go to the landing page in your browser
-
-http://127.0.0.1:8000/
+- Go to the landing page in your browser http://127.0.0.1:8000/
 
