@@ -1,0 +1,81 @@
+<div class="media content-section">
+  <div class="media-body">
+    <p class="border-bottom">
+      <span class="text-primary font-weight-bold">
+        {% if feed.user == user %}
+          You
+        {% else %}
+          {{ feed.user }}
+        {% endif %}
+      </span>
+      <span>
+        <small class="text-muted">posted a review on {{ feed.time_created|date:"F j, Y, g:i a" }}</small>
+      </span>
+      {% if feed.user == user %}
+        <span class="float-right">
+          <a class="text-primary" href="{% url 'reviews:review-update' feed.id %}">Update</a>
+          <a class="ml-2 text-danger" href="{% url 'reviews:review-delete' feed.id %}">Delete</a>
+        </span>
+      {% endif %}
+    </p>
+    <div class="box text-center">
+      <h5 class="font-weight-bold">{{ feed.headline }}</h5>
+    </div>
+    <div class="container pt-3">
+      <div class="row">
+        <div class="col flex-grow-0 px-1">
+          <div class="text-justify">
+            {{ feed.body }}
+          </div>
+          <div class="box pt-2">
+            <h5>Rating: {{ feed.rating }}★</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border rounder 3px bg-light mt-4 pl-3 pr-3 py-2">
+      <p class="border-bottom">
+        <span class="text-primary font-weight-bold">
+          {% if feed.ticket.user == user %}
+            You
+          {% else %}
+            {{ feed.ticket.user }}
+          {% endif %}
+        </span>
+        <span>
+          <small class="text-muted">requested a review on {{ feed.ticket.time_created|date:"F j, Y, g:i a" }}</small>
+        </span>
+        {% if feed.user != user %}
+          {% if feed.ticket.user == user %}
+            <span class="float-right">
+              <a class="text-primary" href="{% url 'reviews:ticket-update' feed.ticket.id %}">Update</a>
+              <a class="ml-2 text-danger" href="{% url 'reviews:ticket-delete' feed.ticket.id %}">Delete</a>
+            </span>
+          {% endif %}
+        {% endif %}
+      </p>
+      <div class="box text-center">
+        <h5 class="font-weight-bold">{{ feed.ticket.title }}</h5>
+      </div>
+      <div class="container pt-3">
+        <div class="row">
+          <div class="col flex-grow-0 px-1">
+            {% if feed.ticket.image %}
+              <img class="img-thumbnail float-left mb-1 mr-3" src="{{ feed.ticket.image.url }}" width="125" height="200" alt="{{ feed.ticket.title }}">
+            {% endif %}
+            <div class="text-justify">
+              {{ feed.ticket.description }}
+            </div>
+            <!-- {% if feed.ticket.review_set.all %} -->
+              {% if feed.user != user %}
+                <div class="text-right">
+                  <a class="btn btn-primary" href="{% url 'reviews:ticket-response' feed.ticket.pk %}">Post a review</a>
+                </div>
+              {% endif %}
+            <!-- {% endif %} -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

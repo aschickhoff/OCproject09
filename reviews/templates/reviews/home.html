@@ -1,0 +1,28 @@
+{% extends "reviews/base.html" %}
+{% block content %}
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <a type="button" class="btn btn-outline-primary mb-3 form-control btn-block" href="{% url 'reviews:ticket-create' %}">Request a Review</a>
+              </div>
+              <div class="col">
+                <a type="button" class="btn btn-outline-primary mb-3 form-control btn-block" href="{% url 'reviews:review-create' %}">Post a Review</a>
+              </div>
+            </div>
+          </div>
+{% if not visible_feeds %}
+    <div class="row d-flex justify-content-center py-2">
+        <p class="font-weight-bold">You need to follow someone first or people you follow have not written anything yet!</p>
+    </div>
+{% endif %}
+
+{% for feed in visible_feeds %}
+  {% if feed.content_type == "TICKET" %}
+    {% include 'reviews/ticket_snippet.html' %}
+  {% endif %}
+  {% if feed.content_type == "REVIEW" %}
+    {% include 'reviews/review_snippet.html' %}
+  {% endif %}
+{% endfor %}
+
+{% endblock content %}

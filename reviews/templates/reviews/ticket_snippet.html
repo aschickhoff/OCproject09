@@ -1,0 +1,44 @@
+<div class="media content-section">
+  <div class="media-body">
+    <p class="border-bottom">
+      <span class="text-primary font-weight-bold">
+        {% if feed.user == user %}
+          You
+        {% else %}
+          {{ feed.user }}
+        {% endif %}
+      </span>
+      <span>
+        <small class="text-muted">requested a review on {{ feed.time_created|date:"F j, Y, g:i a" }}</small>
+      </span>
+      {% if feed.user == user %}
+        <span class="float-right">
+          <a class="text-primary" href="{% url 'reviews:ticket-update' feed.id %}">Update</a>
+          <a class="ml-2 text-danger" href="{% url 'reviews:ticket-delete' feed.id %}">Delete</a>
+        </span>
+      {% endif %}
+    </p>
+    <div class="box text-center">
+      <h5 class="font-weight-bold">{{ feed.title }}</h5>
+    </div>
+    <div class="container pt-3">
+      <div class="row">
+        <div class="col flex-grow-0 px-1">
+          {% if feed.image %}
+            <img class="img-thumbnail float-left mb-1 mr-3" src="{{ feed.image.url }}" width="125" height="200" alt="{{ feed.title }}">
+          {% endif %}
+          <div class="text-justify">
+            {{ feed.description }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      {% if not feed.review_set.all %}
+        <div class="text-right">
+          <a class="btn btn-primary" href="{% url 'reviews:ticket-response' feed.pk %}">Post a review</a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

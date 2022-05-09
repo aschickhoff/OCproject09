@@ -1,0 +1,19 @@
+{% extends "reviews/base.html" %}
+{% block content %}
+<h3 class="text-center">Your Posts</h3>
+{% if not own_posts %}
+    <div class="row d-flex justify-content-center py-2">
+        <p class="font-weight-bold">You need to request a review or post a review first!</p>
+    </div>
+{% endif %}
+
+{% for feed in own_posts %}
+  {% if feed.content_type == "TICKET" %}
+    {% include 'reviews/ticket_snippet.html' %}
+  {% endif %}
+  {% if feed.content_type == "REVIEW" %}
+    {% include 'reviews/review_snippet.html' %}
+  {% endif %}
+{% endfor %}
+
+{% endblock content %}
