@@ -42,6 +42,7 @@ python3 -m venv env
 source env/bin/activate 
 ```
 
+## Packages
 
 5. Install the needed packages
 ```Bash
