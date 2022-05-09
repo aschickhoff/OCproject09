@@ -65,3 +65,9 @@ password: litreview
 user: andre, john, sarah, josie 
 password: litreview
 
+
+
+## Flake8 command
+```Bash
+flake8 --ignore=E501 --format=html --htmldir=f8report --exclude=env,manage.py,db.sqlite3,litreview
+```

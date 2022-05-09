@@ -18,20 +18,15 @@ def feed(request):
 
     # to ask about
     f_user_me = f_users
-    f_user_me.append(request.user) #in case i want to see my postings in the feed too
-
-
+    f_user_me.append(request.user)
     tickets = Ticket.objects.filter(user__in=f_users).order_by("-time_created")
     tickets = tickets.annotate(content_type=Value("TICKET", CharField()))
     reviews = Review.objects.filter(user__in=f_users).order_by("-time_created")
     reviews = reviews.annotate(content_type=Value("REVIEW", CharField()))
-
     visible_feeds = sorted(chain(tickets, reviews), key=lambda visible_feeds: visible_feeds.time_created, reverse=True)
-
-
-
     context = {'visible_feeds': visible_feeds, 'f_users': f_users}
     return render(request, "reviews/home.html", context)
+
 
 @login_required
 def posts(request):
@@ -57,6 +52,7 @@ def create_ticket(request):
     context = {'t_form': t_form, 'task': 'Create'}
     return render(request, 'reviews/ticket_form.html', context)
 
+
 @login_required
 def create_review(request):
     if request.method == 'POST':
@@ -80,6 +76,7 @@ def create_review(request):
     context = {'t_form': t_form, 'r_form': r_form, 'task': 'Create'}
     return render(request, 'reviews/review_form.html', context)
 
+
 @login_required
 def response_ticket(request, pk):
     ticket = Ticket.objects.get(id=pk)
@@ -98,6 +95,7 @@ def response_ticket(request, pk):
     context = {'r_form': r_form, 'ticket': ticket}
     return render(request, 'reviews/review_form.html', context)
 
+
 @login_required
 def update_ticket(request, pk):
     ticket = Ticket.objects.get(id=pk)
@@ -115,6 +113,7 @@ def update_ticket(request, pk):
         t_form = CreateTicket(instance=ticket)
     context = {"t_form": t_form, 'task': 'Update'}
     return render(request, "reviews/ticket_form.html", context)
+
 
 @login_required
 def update_review(request, pk):

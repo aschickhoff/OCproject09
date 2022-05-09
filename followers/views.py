@@ -6,7 +6,7 @@ from django.db import IntegrityError
 from .forms import FollowerForm
 from .models import UserFollows
 
-# Create your views here.
+
 @login_required
 def following(request):
     if request.method == 'POST':
@@ -22,12 +22,12 @@ def following(request):
                         UserFollows.objects.create(user=request.user, followed_user=followed_user)
                         messages.success(request, "Success! You are following this user now.")
                     except IntegrityError:
-                        messages.error(request, "You are following this user already!")        
+                        messages.error(request, "You are following this user already!")
             except User.DoesNotExist:
                 messages.error(request, "This user does not exist!")
     else:
         form = FollowerForm()
-    
+
     user_follows = UserFollows.objects.filter(user=request.user).order_by('followed_user')
     followed_by = UserFollows.objects.filter(followed_user=request.user).order_by('user')
 

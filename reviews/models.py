@@ -1,7 +1,6 @@
 from PIL import Image
 from django.db import models
 from django.conf import settings
-from django.contrib.auth.models import User
 from django.urls import reverse
 from django.core.validators import MinValueValidator, MaxValueValidator
 
@@ -24,8 +23,6 @@ class Ticket(models.Model):
                 output_size = (200, 125)
                 img.thumbnail(output_size)
                 img.save(self.image.path)
-    
-
 
     def get_absolute_url(self):
         return reverse('ticket-detail', kwargs={'pk': self.pk})

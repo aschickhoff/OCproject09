@@ -12,7 +12,6 @@ class CreateTicket(forms.ModelForm):
         fields = ['title', 'description', 'image']
 
 
-
 class CreateReview(forms.ModelForm):
     headline = forms.CharField(max_length=128, widget=forms.TextInput())
     rating = forms.ChoiceField(initial=1, widget=forms.RadioSelect(), choices=((1, "★"), (2, "★★"), (3, "★★★"), (4, "★★★★"), (5, "★★★★★")))
@@ -21,4 +20,3 @@ class CreateReview(forms.ModelForm):
     class Meta:
         model = Review
         fields = ['headline', 'rating', 'body']
-
