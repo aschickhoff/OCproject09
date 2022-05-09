@@ -15,23 +15,52 @@
 git clone https://github.com/aschickhoff/OCproject09.git
 ```
 
-2. Create virtual environment
+2. Go to your work directory
 ```Bash
 cd litreview
+```
+
+## for Window
+3. Create a virtual environment
+```Bash
 python -m venv env
+```
+
+4. Activate the virtual environment
+```Bash
 env\Scripts\activate
 ```
 
-3. Install the needed packages
+## for Linux
+3. Create a virtual environment
+```Bash
+python3 -m venv env
+```
+
+4. Activate the virtual environment
+```Bash
+source env/bin/activate 
+```
+
+
+5. Install the needed packages
 ```Bash
 pip install -r requirements.txt
 ```
 ## Start the server
 
-4. Launch the Django server
+6. Launch the Django server
 ```Bash
 python manage.py runserver
 ```
 
 - Go to the landing page in your browser http://127.0.0.1:8000/
+
+## Administration
+user: admin 
+password: litreview
+
+## Registered users
+user: andre, john, sarah, josie 
+password: litreview
 
