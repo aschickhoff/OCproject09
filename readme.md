@@ -5,7 +5,7 @@
 
 ## Prerequisite
 
-- [Python3](https://www.python.org/ "Python") is installed
+- [Python 3.10.3](https://www.python.org/ "Python") is installed
 
 ## Installation Steps
 
